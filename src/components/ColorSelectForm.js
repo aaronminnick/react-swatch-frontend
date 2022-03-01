@@ -20,18 +20,41 @@ function ColorSelectForm(props) {
     dispatch(makeApiCall(steps, ...colors));
   }
 
+  const FormStyles = {
+    button: {
+      border: 'none',
+      borderRadius: '.25em',
+      backgroundColor: '#454875',
+      color:'white'
+      // mixBlendMode: 'difference'
+    },
+    colordiv: {
+      display: "inline-block"
+    },
+    label: {
+      display: "block"
+    },
+    input: {
+      height: "4em",
+      width: "6em",
+    }
+  };
+
   const inputs = [];
 
+  // {'\u00A0'} 
   for(let i = 1; i <= props.mode; i ++) {
     inputs.push(
-      <label>Color {i}: 
-          <input 
-            type="color"
-            name={`color${i}`}
-            required
-            key={i}
-          />
-        </label>
+      <div style={FormStyles.colordiv}>
+        <label style={FormStyles.label} for={`color${i}`}>Color {i}: </label>
+            <input style={FormStyles.input} 
+              type="color"
+              name={`color${i}`}
+              id={`color${i}`}
+              required
+              key={i}
+            />
+      </div>
     );
   }
 
@@ -39,6 +62,7 @@ function ColorSelectForm(props) {
     <div>
       <form onSubmit={onFormSubmit}>
         {inputs}
+        <br/>
         <label> Number of Between Colors: 
           <input 
             type="number"
@@ -49,7 +73,7 @@ function ColorSelectForm(props) {
             required
           />
         </label>
-        <button type='submit'>Submit</button>
+        <button style={FormStyles.button}type='submit'>Submit</button>
       </form>
     </div>
   );

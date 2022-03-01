@@ -20,7 +20,9 @@ function Swatch(props) {
     if (props.colors.length > 0) {
         content = <div style={{display: "grid", 
           gridTemplateColumns:`repeat(${props.colors.length} , 1fr)`,
-          gridGap:'0'}}>
+          gridGap:'0',
+          border: "5px solid rgb(30, 30, 30)",
+          borderRadius: "8px"}}>
           {props.colors.flat().map((chip) =>
             <div style={{...ColorChipStyle,
               backgroundColor: `#${chip.Hex}`}}

@@ -19,7 +19,7 @@ export const updateMode = mode => ({
 
 export const makeApiCall = (steps, ...args) => {
   const colors = [...args];
-  let url = (colors.length = 2) ? 
+  let url = (colors.length === 2) ? 
     "http://localhost:5000/api/swatch/two?" :// use chained ternaries if we add more options
     "http://localhost:5000/api/swatch/four?";
   for (let i = 1; i <= colors.length; i++) {

@@ -9,18 +9,12 @@ function ColorSelectForm(props) {
     const { dispatch } = props;
     
     const colors = [];
-    for(let i = 0; i < inputs.length; i ++) {
-      colors.push(
-        document.getElementsByName(`color${i}`).value.substring(1).toUpperCase()
-      );
+    colors.push(event.target.color1.value.substring(1).toUpperCase());
+    colors.push(event.target.color2.value.substring(1).toUpperCase());
+    if (props.mode === 4) {
+      colors.push(event.target.color3.value.substring(1).toUpperCase());
+      colors.push(event.target.color4.value.substring(1).toUpperCase());
     }
-
-
-    // try this?
-    // colors.push(event.target.color1.value);
-    // colors.push(event.target.color2.value);
-    // (event.target.color3) ? colors.push(event.target.color3.value) : null;
-    // (event.target.color4) ? colors.push(event.target.color4.value) : null;
 
     const steps = event.target.steps.value;
     dispatch(makeApiCall(steps, ...colors));

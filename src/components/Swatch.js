@@ -7,7 +7,7 @@ function Swatch(props) {
   const scalingFactor = (document.getElementById("chipContainer")) ? 
   document.getElementById("chipContainer").offsetWidth*.99/props.colors.length : "1em";
   const ColorChipStyle = {
-    width: scalingFactor,//`calc(100% / ${props.colors.length})`, 
+    width: scalingFactor, 
     height: scalingFactor,
     display: "inline-block"
   };
@@ -38,8 +38,6 @@ function Swatch(props) {
     </React.Fragment>
   );
 }
-
-//{Array.isArray(content)?content.map(c=>c):content}
 
 const mapStateToProps = (state) => {
   return {

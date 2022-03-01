@@ -4,33 +4,48 @@ import { connect } from 'react-redux';
 
 function ColorSelectForm(props) {
 
-  function onFormSubmit(event){
+  function onFormSubmit(event) {
     event.preventDefault();
     const { dispatch } = props;
-    const startColor = event.target.startColor.value.substring(1).toUpperCase();
-    const endColor = event.target.endColor.value.substring(1).toUpperCase();
+    
+    const colors = [];
+    for(let i = 0; i < inputs.length; i ++) {
+      colors.push(
+        document.getElementsByName(`color${i}`).value.substring(1).toUpperCase()
+      );
+    }
+
+
+    // try this?
+    // colors.push(event.target.color1.value);
+    // colors.push(event.target.color2.value);
+    // (event.target.color3) ? colors.push(event.target.color3.value) : null;
+    // (event.target.color4) ? colors.push(event.target.color4.value) : null;
+
     const steps = event.target.steps.value;
-    dispatch(makeApiCall(steps, startColor, endColor));
+    dispatch(makeApiCall(steps, ...colors));
+  }
+
+  const inputs = [];
+
+  for(let i = 1; i <= props.mode; i ++) {
+    inputs.push(
+      <label>Color {i}: 
+          <input 
+            type="color"
+            name={`color${i}`}
+            required
+            key={i}
+          />
+        </label>
+    );
   }
 
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        <label> Starting Color: 
-          <input 
-            type="color"
-            name="startColor"
-            required
-          />
-        </label>
-        <label> Ending Color: 
-          <input 
-            type="color"
-            name="endColor"
-            required
-          />
-        </label>
-        <label> Number of Colors: 
+        {inputs}
+        <label> Number of Between Colors: 
           <input 
             type="number"
             name="steps"
@@ -46,6 +61,12 @@ function ColorSelectForm(props) {
   );
 }
 
-ColorSelectForm = connect()(ColorSelectForm);
+const mapStateToProps = (state) => {
+  return {
+    mode: state.mode
+  };
+};
+
+ColorSelectForm = connect(mapStateToProps)(ColorSelectForm);
 
 export default ColorSelectForm;

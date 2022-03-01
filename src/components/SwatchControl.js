@@ -11,7 +11,7 @@ class SwatchControl extends React.Component {
     }
   }
   addSelectedColor = (color) => {
-    const maxColorConstant = 9;
+    const maxColorConstant = 8;
     let newSelectedColors = [...this.state.selectedColors];
     if (!newSelectedColors.includes(color)){
       if(newSelectedColors.unshift(color) > maxColorConstant )newSelectedColors.pop();

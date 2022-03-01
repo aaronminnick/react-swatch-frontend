@@ -25,7 +25,8 @@ function ColorSelectForm(props) {
       border: 'none',
       borderRadius: '.25em',
       backgroundColor: '#454875',
-      color:'white'
+      color:'white',
+      margin:'.25em'
       // mixBlendMode: 'difference'
     },
     colordiv: {
@@ -42,7 +43,6 @@ function ColorSelectForm(props) {
 
   const inputs = [];
 
-  // {'\u00A0'} 
   for(let i = 1; i <= props.mode; i ++) {
     inputs.push(
       <div style={FormStyles.colordiv}>
@@ -73,7 +73,7 @@ function ColorSelectForm(props) {
             required
           />
         </label>
-        <button style={FormStyles.button}type='submit'>Submit</button>
+        <button className="button" style={FormStyles.button}type='submit'>Submit</button>
       </form>
     </div>
   );

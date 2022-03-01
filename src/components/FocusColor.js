@@ -2,21 +2,29 @@ import React from 'react';
 
 function FocusColor(props) {
 
-  let content;
   const FocusColorStyles = {
     div: {
       display: 'inline-block',
-      borderRadius: '1em',
-      padding: "1em"
+      paddingLeft: ".5em",
+      paddingRight: ".5em",
+      margin: ".05em",
+      borderRadius: '.2em .2em .5em .5em'
+      
+    },
+    div2: {
+      display: 'inline-block',
+      alignContents:'center',
+      margin: ".05em",
+      display: 'grid',
+      gridTemplateColumns: "repeat(2, 1fr)"
     }
   }
 
   return (
-    <div>
+    <div style={FocusColorStyles.div2}>
       {props.color.map(c => 
         <div style={{...FocusColorStyles.div, backgroundColor: `#${c.Hex}`}}>
-        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>Hex: {c.Hex}</p>
-        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>RGB: {c.Red}, {c.Green}, {c.Blue}</p>
+        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>Hex: {c.Hex + '\u00A0\u00A0'} RGB: {c.Red}, {c.Green}, {c.Blue}</p>
         </div>
       )}
     </div>

@@ -8,7 +8,7 @@ function Swatch(props) {
   document.getElementById("chipContainer").offsetWidth/props.colors.length : "1em";
   const ColorChipStyle = {
     width: "auto", //`calc(100% / ${props.colors.length})`, 
-    height: `calc(70vh / ${props.colors.length})`,
+    height: `calc(65vh / ${props.colors.length})`,
     margin: '0',
     display: "inline-block"
   };

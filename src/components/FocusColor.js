@@ -3,25 +3,22 @@ import React from 'react';
 function FocusColor(props) {
 
   let content;
-  
   const FocusColorStyles = {
     div: {
-      // backgroundColor: `#${props.color.Hex}`,
-      // height:'1em',
-      // width: '1em',
       display: 'inline-block',
-      border: `solid #${props.color.Hex} 20px`,
-      borderRadius: '15%',
+      borderRadius: '1em',
       padding: "1em"
     }
   }
 
   return (
     <div>
-      <div style={FocusColorStyles.div}>
-      <p>Hex: {props.color.Hex}</p>
-      <p>RGB: {props.color.Red}, {props.color.Green}, {props.color.Blue}</p>
-      </div>
+      {props.color.map(c => 
+        <div style={{...FocusColorStyles.div, backgroundColor: `#${c.Hex}`}}>
+        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>Hex: {c.Hex}</p>
+        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>RGB: {c.Red}, {c.Green}, {c.Blue}</p>
+        </div>
+      )}
     </div>
   );
 }

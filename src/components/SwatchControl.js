@@ -11,11 +11,9 @@ class SwatchControl extends React.Component {
     }
   }
   
-  
-  changeSelectedColor(color) {
-    this.setState(() => {
-      return {selectedColor: color};
-    });
+  // this.setState({kegs: newKegs});
+  changeSelectedColor = (color) => {
+    this.setState({selectedColor: color});
   }
   
   render() {

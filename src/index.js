@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 const store = createStore(reducer, applyMiddleware(ThunkMiddleware));
 
 ReactDOM.render(
-  <Provider store={store}>,
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')

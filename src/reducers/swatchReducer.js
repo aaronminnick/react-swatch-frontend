@@ -6,7 +6,7 @@ const initialState = {
   error: null
 }
 
-export default(state = initialState, action) => {
+function swatchReducer(state = initialState, action) {
   switch (action.type) {
     case a.REQUEST_COLORS:
       return Object.assign({}, state, {
@@ -20,9 +20,11 @@ export default(state = initialState, action) => {
     case a.GET_COLORS_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
-        error: action.error
+        error: action.error.message
       });
     default:
       return state;
   }
 }
+
+export default swatchReducer;

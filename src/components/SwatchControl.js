@@ -17,7 +17,7 @@ class SwatchControl extends React.Component {
   
   render() {
     let focusColor;
-    if (!this.state.selectedColor === null) {
+    if (this.state.selectedColor !== null) {
       focusColor = <FocusColor color={this.state.selectedColor} />
     } else {
       focusColor = null;
@@ -25,7 +25,9 @@ class SwatchControl extends React.Component {
 
     return(
       <React.Fragment>
-        <Swatch selectColorFunc={this.changeSelectedColor} />
+        <div id="chipContainer">
+          <Swatch selectColorFunc={this.changeSelectedColor} />
+        </div>
         {focusColor}
       </React.Fragment>
     );

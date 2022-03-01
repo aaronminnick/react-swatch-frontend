@@ -7,8 +7,8 @@ function ColorSelectForm(props) {
   function onFormSubmit(event){
     event.preventDefault();
     const { dispatch } = props;
-    const startColor = event.target.startColor.value.substring(1);
-    const endColor = event.target.endColor.value.substring(1);
+    const startColor = event.target.startColor.value.substring(1).toUpperCase();
+    const endColor = event.target.endColor.value.substring(1).toUpperCase();
     const steps = event.target.steps.value;
     dispatch(makeApiCall(steps, startColor, endColor));
   }

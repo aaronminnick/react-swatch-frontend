@@ -4,30 +4,28 @@ import { v4 } from 'uuid';
 
 function Swatch(props) {
 
-  let content;
-
+  const scalingFactor = (document.getElementById("chipContainer")) ? 
+  document.getElementById("chipContainer").offsetWidth*.99/props.colors.length : "1em";
   const ColorChipStyle = {
-    width: `calc(100% / ${props.colors.length})`, 
-    height: "2em",
+    width: scalingFactor,//`calc(100% / ${props.colors.length})`, 
+    height: scalingFactor,
     display: "inline-block"
   };
-
+  
+  let content;
   if (props.isLoading) {
     content = <div>Loading...</div>;
   } else {
     if (props.colors.length > 0) {
-      console.log(props.colors);
       content = props.colors.map(c => {
-        console.log(c);
         return <div style={{...ColorChipStyle,
           backgroundColor: `#${c.Hex}`}}
           onClick={() => props.selectColorFunc(c)}
           key={v4()}>
         </div>
       })
-      console.log("content after map", content);
     } else {
-      content = <div >Else block</div>;
+      content = <div />;
     }
     if (props.error != null) {
       content = <div>{props.error}</div>;

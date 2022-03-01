@@ -11,14 +11,13 @@ class SwatchControl extends React.Component {
     }
   }
   
-  // this.setState({kegs: newKegs});
   changeSelectedColor = (color) => {
     this.setState({selectedColor: color});
   }
   
   render() {
     let focusColor;
-    if (this.state.selectedColor != null) {
+    if (!this.state.selectedColor === null) {
       focusColor = <FocusColor color={this.state.selectedColor} />
     } else {
       focusColor = null;

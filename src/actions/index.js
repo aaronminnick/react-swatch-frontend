@@ -23,10 +23,7 @@ export const makeApiCall = (steps, ...args) => {
   return dispatch => {
     dispatch(requestColors);
     return fetch(url)
-      .then(response => {
-        console.log(response);
-        return response.json()
-      })
+      .then(response => response.json())
       .then(jsonifiedResponse => {
         console.log("API call results: ", jsonifiedResponse);
         dispatch(getColorsSuccess(jsonifiedResponse));

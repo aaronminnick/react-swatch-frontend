@@ -25,7 +25,8 @@ function swatchReducer(state = initialState, action) {
       });
     case a.UPDATE_MODE:
       return Object.assign({}, state, {
-        mode: action.mode
+        mode: action.mode,
+        colors: []
       });
     default:
       return state;

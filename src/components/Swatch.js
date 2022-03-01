@@ -5,10 +5,11 @@ import { v4 } from 'uuid';
 function Swatch(props) {
 
   const scalingFactor = (document.getElementById("chipContainer")) ? 
-  document.getElementById("chipContainer").offsetWidth*.99/props.colors.length : "1em";
+  document.getElementById("chipContainer").offsetWidth/props.colors.length : "1em";
   const ColorChipStyle = {
-    width: scalingFactor, 
-    height: scalingFactor,
+    width: "auto", //`calc(100% / ${props.colors.length})`, 
+    height: `calc(70vh / ${props.colors.length})`,
+    margin: '0',
     display: "inline-block"
   };
   
@@ -17,13 +18,16 @@ function Swatch(props) {
     content = <div>Loading...</div>;
   } else {
     if (props.colors.length > 0) {
-      content = props.colors.map(c => {
-        return <div style={{...ColorChipStyle,
-          backgroundColor: `#${c.Hex}`}}
-          onClick={() => props.selectColorFunc(c)}
-          key={v4()}>
-        </div>
-      })
+        content = <div style={{display: "grid", 
+          gridTemplateColumns:`repeat(${props.colors.length} , 1fr)`,
+          gridGap:'0'}}>
+          {props.colors.flat().map((chip) =>
+            <div style={{...ColorChipStyle,
+              backgroundColor: `#${chip.Hex}`}}
+              onClick={() => props.selectColorFunc(chip)}
+              key={v4()} />
+          )}
+        </div>;
     } else {
       content = <div />;
     }
@@ -43,7 +47,8 @@ const mapStateToProps = (state) => {
   return {
     isLoading: state.isLoading,
     colors: state.colors,
-    error: state.error
+    error: state.error,
+    mode: state.mode
   };
 };
 

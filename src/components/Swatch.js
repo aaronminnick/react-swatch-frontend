@@ -7,30 +7,31 @@ function Swatch(props) {
   let content;
 
   if (props.isLoading) {
-    content = <p>Loading...</p>;
+    content = <div>Loading...</div>;
   } else {
     if (props.colors.length > 0) {
-      {props.colors.map(c => 
+      props.colors.map(c => 
         <div style={{
           backgroundColor: `#${c.Hex}`, 
           width: `calc(100% / ${props.colors.length})`, 
           height: "2em"
         }}
         onClick={props.selectColorFunc(c)}
-        key={v4()} />
-      )}
+        key={v4()}>
+        </div>
+      )
     } else {
       content = <div />;
     }
     if (props.error != null) {
-      content = <p>{error}</p>;
+      content = <div>{props.error}</div>;
     }
   }
 
   return (
-    <div>
+    <React.Fragment>
       {content}
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -2,6 +2,8 @@ import React from 'react';
 
 function FocusColor(props) {
 
+  let content;
+  
   const FocusColorStyles = {
     div: {
       backgroundColor: `#${props.color.Hex}`

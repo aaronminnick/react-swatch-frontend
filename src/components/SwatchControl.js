@@ -4,24 +4,32 @@ import FocusColor from "./FocusColor";
 
 class SwatchControl extends React.Component {
   
-  SwatchControl(props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedColor: null
     }
   }
-
+  
+  
   changeSelectedColor(color) {
     this.setState(() => {
       return {selectedColor: color};
     });
   }
-
+  
   render() {
+    let focusColor;
+    if (this.state.selectedColor != null) {
+      focusColor = <FocusColor color={this.state.selectedColor} />
+    } else {
+      focusColor = null;
+    }
+
     return(
       <React.Fragment>
         <Swatch selectColorFunc={this.changeSelectedColor} />
-        <FocusColor color={this.state.selectedColor} />
+        {focusColor}
       </React.Fragment>
     );
   }

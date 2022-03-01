@@ -12,9 +12,16 @@ const getColorsFailure = error => ({
   error
 });
 
+export const updateMode = mode => ({
+  type: a.UPDATE_MODE,
+  mode
+});
+
 export const makeApiCall = (steps, ...args) => {
   const colors = [...args];
-  let url = "http://localhost:5000/api/swatch?";
+  let url = (colors.length = 2) ? 
+    "http://localhost:5000/api/swatch/two?" :// use chained ternaries if we add more options
+    "http://localhost:5000/api/swatch/four?";
   for (let i = 1; i <= colors.length; i++) {
     url += `color${i}=${colors[i-1]}&`;
   }

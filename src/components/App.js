@@ -11,9 +11,7 @@ function App() {
       <div className="justify-center">
         <Header />
       </div>
-      <div className="justify-center">
         <SwatchControl />
-      </div>
       <div className="justify-center">
         <ColorSelectForm />
       </div>

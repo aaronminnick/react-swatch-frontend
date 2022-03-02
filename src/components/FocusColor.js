@@ -24,7 +24,12 @@ function FocusColor(props) {
     <div style={FocusColorStyles.div2}>
       {props.color.map(c => 
         <div style={{...FocusColorStyles.div, backgroundColor: `#${c.Hex}`}}>
-        <p style={{color: (c.Red + c.Green + c.Blue) / 3 > 120 ? 'black' : 'white'}}>Hex: {c.Hex + '\u00A0\u00A0'} RGB: {c.Red}, {c.Green}, {c.Blue}</p>
+          <p style={{color: ((c.Red + c.Green + c.Blue) / 3 > 120) ? 'black' : 'white'}}>
+            Hex: {c.Hex}{'\u00A0'}
+            Red: {c.Red}{'\u00A0'}
+            Green: {c.Green}{'\u00A0'}
+            Blue: {c.Blue}
+          </p>
         </div>
       )}
     </div>

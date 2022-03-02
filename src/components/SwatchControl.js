@@ -35,10 +35,14 @@ class SwatchControl extends React.Component {
 
     return(
       <React.Fragment>
-        <div id="chipContainer">
-          <Swatch selectColorFunc={this.addSelectedColor} />
+        <div className="justify-center">
+          <div id="chipContainer">
+            <Swatch selectColorFunc={this.addSelectedColor} />
+          </div>
         </div>
-        {focusColor}
+        <div className="justify-center">
+          {focusColor}
+        </div>
       </React.Fragment>
     );
   }

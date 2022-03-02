@@ -27,7 +27,6 @@ function ColorSelectForm(props) {
       backgroundColor: '#454875',
       color:'white',
       margin:'.25em'
-      // mixBlendMode: 'difference'
     },
     colordiv: {
       display: "inline-block"
@@ -43,7 +42,7 @@ function ColorSelectForm(props) {
 
   const inputs = [];
 
-  for(let i = 1; i <= props.mode; i ++) {
+  for(let i = 1; i <= 4; i ++) {
     inputs.push(
       <div style={FormStyles.colordiv}
         key={i}>
@@ -61,15 +60,16 @@ function ColorSelectForm(props) {
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        {inputs}
+        {(props.mode === 4) ? inputs : inputs.slice(0,2)}
         <br/>
-        <label> Number of Between Colors: 
+        <label> Steps between colors (1-10):{'\u00A0'}
           <input 
             type="number"
             name="steps"
             min="1"
             max="10"
             step="1"
+            Value="1"
             required
           />
         </label>

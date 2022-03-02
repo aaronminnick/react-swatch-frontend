@@ -3,34 +3,46 @@
   color: rgb(83, 83, 83);
 }
 body {
+  --chip-dimension: 0px;
   background-color: rgb(245, 245, 245);
 }
 
-/* .chip-appear {
-  opacity: 0.01;
-}
-
-.chip-appear-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-  -webkit-transition: opacity 500ms ease-in;
-} */
-
 .chip-enter {
   opacity: 0.01;
+  height: 1px;
+  width: 1px;
 }
 
 .chip-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
-  -webkit-transition: opacity 500ms ease-in;
+  height: var(--chip-dimension);
+  width: var(--chip-dimension);
+  transition: 
+    opacity 500ms ease-in,
+    height 500ms linear,
+    width 500ms linear;
 }
 
-.chip-leave {
-  opacity: 1;
-}
-
-.chip-leave-active {
+.chip-expanded-enter {
   opacity: 0.01;
+  height: var(--chip-dimension);
+  width: var(--chip-dimension);
+}
+
+.chip-expanded-enter-active {
+  opacity: 1;
+  height: var(--chip-dimension);
+  width: var(--chip-dimension);
   transition: opacity 500ms ease-in;
+}
+
+.chip-enter-done {
+  opacity: 1;
+  height: var(--chip-dimension);
+  width: var(--chip-dimension);
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
 }

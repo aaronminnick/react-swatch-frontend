@@ -4,15 +4,24 @@ import { v4 } from 'uuid';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function Swatch(props) {
-  const scalingFactor = (document.getElementById("chipContainer")) ? 
-  document.getElementById("chipContainer").offsetWidth/props.colors.length : "1em";
+  
   const ColorChipStyle = {
-    width: "auto", //`calc(100% / ${props.colors.length})`, 
-    height: `calc(65vh / ${props.colors.length})`,
     margin: '0',
     display: "inline-block"
   };
   
+  var body = document.body;
+  body.style.setProperty("--chip-dimension", `calc(65vh / ${props.colors.length})`);
+  const vhToPx = window.innerHeight/100;
+  var chipContainer = document.getElementById("chipContainer") || {clientWidth: 0};
+  var checkWidth = chipContainer.clientWidth > (65 * vhToPx * .9);
+
+  const classNames = {
+    enter: checkWidth ? 'chip-expanded-enter' : 'chip-enter',
+    enterActive: checkWidth ? 'chip-expanded-enter-active' : 'chip-enter-active',
+    enterDone: 'chip-enter-done'
+  };
+
   let content;
   if (props.isLoading) {
     content = <div>Loading...</div>;
@@ -22,11 +31,12 @@ function Swatch(props) {
           gridTemplateColumns:`repeat(${props.colors.length} , 1fr)`,
           gridGap:'0',
           border: "5px solid rgb(30, 30, 30)",
-          borderRadius: "8px"}}>
+          borderRadius: "8px",
+          width: "fit-content"}}>
           {props.colors.flat().map((chip) =>
             <CSSTransition key={v4()}
             in={true}
-            classNames="chip"
+            classNames={classNames}
             timeout={500}>
               <div style={{...ColorChipStyle,
                 backgroundColor: `#${chip.Hex}`}}
@@ -35,6 +45,7 @@ function Swatch(props) {
             </CSSTransition>
           )}
         </div>;
+        // console.log(65*vhToPx, chipContainer.clientWidth, (chipContainer.clientWidth > (65 * vhToPx * .9)));
     } else {
       content = <div />;
     }

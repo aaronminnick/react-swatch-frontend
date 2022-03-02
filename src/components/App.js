@@ -8,9 +8,15 @@ function App() {
   return (
     <React.Fragment>
       <Container>
+      <div className="justify-center">
         <Header />
+      </div>
+      <div className="justify-center">
         <SwatchControl />
+      </div>
+      <div className="justify-center">
         <ColorSelectForm />
+      </div>
       </Container>
     </React.Fragment>
   );

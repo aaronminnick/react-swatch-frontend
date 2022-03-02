@@ -15,6 +15,7 @@ function Header() {
       // mixBlendMode: 'difference'
     }
   }
+  
   return (
     <React.Fragment>
       <button style={HeaderStyles.button} onClick={() => dispatch(updateMode(2))}>Two Colors</button>

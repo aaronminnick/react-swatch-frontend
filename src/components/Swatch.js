@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function Swatch(props) {
 
@@ -24,10 +25,15 @@ function Swatch(props) {
           border: "5px solid rgb(30, 30, 30)",
           borderRadius: "8px"}}>
           {props.colors.flat().map((chip) =>
-            <div style={{...ColorChipStyle,
-              backgroundColor: `#${chip.Hex}`}}
-              onClick={() => props.selectColorFunc(chip)}
-              key={v4()} />
+            <CSSTransition
+            in={true}
+            classNames="chip"
+            timeout={500}>
+              <div style={{...ColorChipStyle,
+                backgroundColor: `#${chip.Hex}`}}
+                onClick={() => props.selectColorFunc(chip)}
+                key={v4()} />
+            </CSSTransition>
           )}
         </div>;
     } else {
@@ -40,7 +46,9 @@ function Swatch(props) {
 
   return (
     <React.Fragment>
-      {content}
+      <TransitionGroup>
+        {content}
+      </TransitionGroup>
     </React.Fragment>
   );
 }

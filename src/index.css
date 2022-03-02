@@ -5,3 +5,22 @@
 body {
   background-color: rgb(245, 245, 245);
 }
+
+.chip-enter {
+  opacity: 0.01;
+}
+
+.chip-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 500ms ease-in;
+}
+
+.chip-leave {
+  opacity: 1;
+}
+
+.chip-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}

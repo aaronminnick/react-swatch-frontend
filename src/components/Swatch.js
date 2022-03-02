@@ -4,7 +4,6 @@ import { v4 } from 'uuid';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function Swatch(props) {
-
   const scalingFactor = (document.getElementById("chipContainer")) ? 
   document.getElementById("chipContainer").offsetWidth/props.colors.length : "1em";
   const ColorChipStyle = {
@@ -25,14 +24,14 @@ function Swatch(props) {
           border: "5px solid rgb(30, 30, 30)",
           borderRadius: "8px"}}>
           {props.colors.flat().map((chip) =>
-            <CSSTransition
+            <CSSTransition key={v4()}
             in={true}
             classNames="chip"
             timeout={500}>
               <div style={{...ColorChipStyle,
                 backgroundColor: `#${chip.Hex}`}}
                 onClick={() => props.selectColorFunc(chip)}
-                key={v4()} />
+                />
             </CSSTransition>
           )}
         </div>;

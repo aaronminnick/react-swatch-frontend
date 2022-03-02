@@ -11,7 +11,8 @@ function swatchReducer(state = initialState, action) {
   switch (action.type) {
     case a.REQUEST_COLORS:
       return Object.assign({}, state, {
-        isLoading: true
+        isLoading: true,
+        colors: []
       });
     case a.GET_COLORS_SUCCESS:
       return Object.assign({}, state, {

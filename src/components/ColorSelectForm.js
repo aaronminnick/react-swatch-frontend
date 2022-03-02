@@ -45,14 +45,14 @@ function ColorSelectForm(props) {
 
   for(let i = 1; i <= props.mode; i ++) {
     inputs.push(
-      <div style={FormStyles.colordiv}>
-        <label style={FormStyles.label} for={`color${i}`}>Color {i}: </label>
+      <div style={FormStyles.colordiv}
+        key={i}>
+        <label style={FormStyles.label} htmlFor={`color${i}`}>Color {i}: </label>
             <input style={FormStyles.input} 
               type="color"
               name={`color${i}`}
               id={`color${i}`}
               required
-              key={i}
             />
       </div>
     );

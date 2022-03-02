@@ -6,6 +6,16 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
+/* .chip-appear {
+  opacity: 0.01;
+}
+
+.chip-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 500ms ease-in;
+} */
+
 .chip-enter {
   opacity: 0.01;
 }
